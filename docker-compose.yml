@@ -4,6 +4,7 @@ services:
   # application container
   node-app: 
     container_name: express-node-app-container
+    image: mohamedabdallah82/tresmerge-docker
     ports:
       - "4000:4000"
     env_file:

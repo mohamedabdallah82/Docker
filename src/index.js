@@ -53,12 +53,12 @@ mongoose
 
 app.get('/', (req, res) => {
     redisClient.set('products', 'products..');
-    res.send('<h1> Hello Tresmerge!</h1>');
+    res.send('<h1> Hello Tresmerge! from AWS, using docker hub</h1>');
 });
 
 app.get('/data', async (req, res) => {
     const products = await redisClient.get('products');
-    res.send(`<h1> Hello Tresmerge from AWS!</h1> <h2>${products}</h2>`);
+    res.send(`<h1> Hello Tresmerge</h1> <h2>${products}</h2>`);
 });
 
 app.listen(PORT, () => console.log(`app is up and running on port: ${PORT}`));
