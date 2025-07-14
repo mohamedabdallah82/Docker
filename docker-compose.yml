@@ -3,12 +3,21 @@ version: "3"
 services:
   # application container
   node-app: 
-    container_name: express-node-app-container
+    # container_name: express-node-app-container
     image: mohamedabdallah82/tresmerge-docker
-    ports:
-      - "4000:4000"
+    # ports:
+    #   - "4000:4000"
     env_file:
       - ./.env
+    # docker orchestration
+    deploy:
+      replicas: 4
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        delay: 5s
     depends_on:
       - mongo
       - redis
@@ -64,6 +73,7 @@ services:
     #   depends_on:
     #     - mongo
   
+
 
 volumes:
   mongo-db:
